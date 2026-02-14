@@ -1,0 +1,139 @@
+/* =========================
+   Modern CSS Reset (React-friendly)
+   ========================= */
+
+/* 1) Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2) Remove default margins */
+* {
+  margin: 0;
+}
+
+/* 3) Improve text rendering */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 4) Set core body defaults */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  background: #0f0f0f;
+  color: #e0e0e0;
+  overflow-x: hidden;
+}
+
+/* 5) Media elements behave as blocks */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6) Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* 7) Remove built-in form typography & spacing quirks */
+button,
+input,
+select,
+textarea {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+/* 8) Buttons */
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* 9) Textareas: avoid overflow issues */
+textarea {
+  resize: vertical;
+}
+
+/* 10) Anchors: reasonable defaults */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* 11) Lists: opt-in styling */
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+/* 12) Headings: keep consistent weight & wrapping */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  overflow-wrap: break-word;
+}
+
+/* 13) Paragraphs: safe wrapping */
+p {
+  overflow-wrap: break-word;
+}
+
+/* 14) Prevent text overflow for long content */
+pre,
+code {
+  overflow-wrap: break-word;
+}
+
+/* 15) Make focus visible (accessibility) */
+:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* 16) Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 17) Optional: root defaults (safe) */
+:root {
+  color-scheme: light;
+}
+
+/* 18) Optional: smooth scrolling (remove if undesired) */
+/* html { scroll-behavior: smooth; } */

@@ -1,0 +1,184 @@
+.taskCard {
+  background: linear-gradient(135deg, #1a1a1a 0%, #1f1f1f 100%);
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 16px;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    border-color: #667eea;
+  }
+}
+
+.priorityIndicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+}
+
+.priorityHigh {
+  background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+}
+
+.priorityMedium {
+  background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+}
+
+.priorityLow {
+  background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+}
+
+.taskHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.taskCheckbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #666;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  margin-top: 2px;
+
+  &:hover {
+    border-color: #667eea;
+  }
+}
+
+.taskTitleWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.taskTitle {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #e0e0e0;
+}
+
+.projectBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(102, 126, 234, 0.15);
+  border: 1px solid rgba(102, 126, 234, 0.3);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #8b9cf5;
+  width: fit-content;
+}
+
+.projectIcon {
+  font-size: 14px;
+}
+
+.taskDescription {
+  color: #999;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  padding-left: 32px;
+}
+
+.taskMetaInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #2a2a2a;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.metaIcon {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+}
+
+.metaLabel {
+  color: #666;
+  min-width: 80px;
+}
+
+.metaValue {
+  color: #e0e0e0;
+  font-weight: 500;
+}
+
+.metaValue.priorityHigh {
+  color: #ef4444;
+}
+
+.metaValue.priorityMedium {
+  color: #f59e0b;
+}
+
+.metaValue.priorityLow {
+  color: #10b981;
+}
+
+.taskMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.tag {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.tagwork {
+  background: rgba(102, 126, 234, 0.2);
+  color: #667eea;
+}
+
+.tagpersonal {
+  background: rgba(118, 75, 162, 0.2);
+  color: #a78bfa;
+}
+
+.tagurgent {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.taskTime {
+  font-size: 12px;
+  color: #666;
+}
+
+.subtasksCount {
+  font-size: 12px;
+  color: #666;
+}
