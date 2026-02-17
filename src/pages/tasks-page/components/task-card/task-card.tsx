@@ -51,7 +51,6 @@ const TaskCard = ({
         </div>
         <div className={css.taskMeta}>
           <span className={`${css.tag} ${css.tagwork}`}>{projectName}</span>
-          {/* <span className={`${css.tag} ${css.tagurgent}`}>Срочно</span> */}
         </div>
       </div>
     </div>

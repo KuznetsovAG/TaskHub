@@ -1,5 +1,7 @@
 export const ROUTES = {
-  REGISTRATION_PAGE: "/",
-  MAIN_PAGE: "/main",
-  TASKS_PAGE: "/tasks",
+  AUTH: "/auth",
+  WORKSPACE: "/",
+  TODOS: "/todos",
+  CREATE_TASK: "/todos/new",
+  FILTER_PROJECT: "tasks/filter",
 };

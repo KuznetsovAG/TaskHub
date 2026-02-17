@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { workspaceReducer } from "../pages/workspace-page/state/workspace-slice";
+import { authReducer } from "../pages/auth-page/state/auth-slice";
 
 export const store = configureStore({
   reducer: {
     workspace: workspaceReducer,
+    auth: authReducer,
   },
 });
 

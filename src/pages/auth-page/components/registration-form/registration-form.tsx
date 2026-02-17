@@ -11,17 +11,20 @@ import {
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../../../constants/routes";
 import { Button, Input } from "../../../../components";
+import { useDispatch } from "react-redux";
+import { addUser } from "../../state/auth-slice";
 
 const RegistrationForm = () => {
   const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { control, handleSubmit } = useForm<FormValues>({
     mode: "onChange",
   });
 
   const onSubmitForm = (data: FormValues) => {
-    console.log("data :>> ", data);
-    navigate(ROUTES.MAIN_PAGE);
+    dispatch(addUser(data));
+    navigate(ROUTES.WORKSPACE);
   };
 
   return (
@@ -45,7 +48,7 @@ const RegistrationForm = () => {
 
           <Controller
             control={control}
-            name="userName"
+            name="fullName"
             render={({ field, fieldState }) => (
               <Input
                 title="Введите ваше имя"
