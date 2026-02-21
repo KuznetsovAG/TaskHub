@@ -44,11 +44,13 @@ const TaskCard = ({
           <span className={css.metaLabel}>Приоритет:</span>
           <span className={css.metaValue}>{priority}</span>
         </div>
-        <div className={css.metaItem}>
-          <span className={css.metaIcon}>📅</span>
-          <span className={css.metaLabel}>Дедлайн:</span>
-          <span className={css.metaValue}>{dueDate}</span>
-        </div>
+        {dueDate && (
+          <div className={css.metaItem}>
+            <span className={css.metaIcon}>📅</span>
+            <span className={css.metaLabel}>Дедлайн:</span>
+            <span className={css.metaValue}>{dueDate}</span>
+          </div>
+        )}
         <div className={css.taskMeta}>
           <span className={`${css.tag} ${css.tagwork}`}>{projectName}</span>
         </div>

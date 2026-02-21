@@ -2,7 +2,8 @@
   display: flex;
   flex: 1;
   padding: 32px;
-  overflow-y: auto;
+  height: 810px;
+  overflow-y: scroll;
 }
 
 .container {

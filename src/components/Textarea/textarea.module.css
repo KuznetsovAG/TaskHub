@@ -12,6 +12,11 @@
   &:focus {
     outline: none;
   }
+
+  &[data-error="true"] {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+  }
 }
 
 .wrapper {

@@ -6,10 +6,23 @@ import CreateTask from "../pages/create-task/create-task";
 import TasksPage from "../pages/tasks-page/tasks-page";
 import MainLayout from "../pages/main-layout/main-layout";
 import FilteredTaskCard from "../pages/filtered-task-card/filtered-task-card";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
-    <div className="">
+    <div>
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 2500,
+          style: {
+            borderRadius: "12px",
+            border: "1px solid #E6E8EC",
+            padding: "12px 14px",
+            fontSize: "14px",
+          },
+        }}
+      />
       <Routes>
         <Route path={ROUTES.AUTH} element={<AuthPage />} />
 
