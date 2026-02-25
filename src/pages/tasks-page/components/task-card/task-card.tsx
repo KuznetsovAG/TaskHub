@@ -2,14 +2,13 @@ import * as React from "react";
 
 import css from "./task-card.module.css";
 import type { Priority, Todo } from "../../../workspace-page/utils/types";
-import { getPriorityIcon } from "../../utils/functions";
 
 const TaskCard = ({
   taskValue,
   category,
   descriptionValue,
   dueDate,
-  priority,
+  priority = "low",
   projectName,
 }: Todo) => {
   const priorityClassMap: Record<Priority, string> = {
@@ -17,6 +16,9 @@ const TaskCard = ({
     medium: css.priorityMedium,
     low: css.priorityLow,
   };
+
+  const additionalInfo = Boolean(category || projectName || dueDate);
+
   return (
     <div className={css.taskCard}>
       <div
@@ -33,28 +35,29 @@ const TaskCard = ({
 
       <div className={css.taskDescription}>{descriptionValue}</div>
 
-      <div className={css.taskMetaInfo}>
-        <div className={css.metaItem}>
-          <span className={css.metaIcon}>📂</span>
-          <span className={css.metaLabel}>Категория:</span>
-          <span className={css.metaValue}>{category}</span>
+      {additionalInfo && (
+        <div className={css.taskMetaInfo}>
+          {category && (
+            <div className={css.metaItem}>
+              <span className={css.metaIcon}>📂</span>
+              <span className={css.metaLabel}>Категория:</span>
+              <span className={css.metaValue}>{category}</span>
+            </div>
+          )}
+          {dueDate && (
+            <div className={css.metaItem}>
+              <span className={css.metaIcon}>📅</span>
+              <span className={css.metaLabel}>Дедлайн:</span>
+              <span className={css.metaValue}>{dueDate}</span>
+            </div>
+          )}
+          {projectName && (
+            <div className={css.taskMeta}>
+              <span className={`${css.tag} ${css.tagwork}`}>{projectName}</span>
+            </div>
+          )}
         </div>
-        <div className={css.metaItem}>
-          <span className={css.metaIcon}>{getPriorityIcon(priority)}</span>
-          <span className={css.metaLabel}>Приоритет:</span>
-          <span className={css.metaValue}>{priority}</span>
-        </div>
-        {dueDate && (
-          <div className={css.metaItem}>
-            <span className={css.metaIcon}>📅</span>
-            <span className={css.metaLabel}>Дедлайн:</span>
-            <span className={css.metaValue}>{dueDate}</span>
-          </div>
-        )}
-        <div className={css.taskMeta}>
-          <span className={`${css.tag} ${css.tagwork}`}>{projectName}</span>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

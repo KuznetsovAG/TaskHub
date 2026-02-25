@@ -13,17 +13,17 @@ const initialState: InitialStateProps = {
 };
 
 export const {
-  actions: { addTodo, setCurrentPage },
+  actions: { addTodo, setTodo },
   reducer: workspaceReducer,
 } = createSlice({
   initialState,
   name: "workspace-page",
   reducers: {
     addTodo(state, { payload }: PayloadAction<Todo>) {
-      state.todos.push(payload);
+      state.todos.unshift(payload);
     },
-    setCurrentPage(state, { payload }: PayloadAction<string>) {
-      state.currentPage = payload;
+    setTodo(state, { payload }: PayloadAction<Todo[]>) {
+      state.todos = payload;
     },
   },
 });

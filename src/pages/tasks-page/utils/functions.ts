@@ -1,4 +1,5 @@
 import type { Priority } from "../../workspace-page/utils/types";
+import type { Tasks } from "../api/dto";
 
 export const getPriorityIcon = (priority: Priority | string): string => {
   switch (priority) {
@@ -11,4 +12,12 @@ export const getPriorityIcon = (priority: Priority | string): string => {
     default:
       return "⚪";
   }
+};
+
+export const normalizeTasks = (data: Tasks[]) => {
+  return data.map((item) => ({
+    id: item.id,
+    isCompleted: item.completed,
+    taskValue: item.title,
+  }));
 };

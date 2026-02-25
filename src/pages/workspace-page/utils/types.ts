@@ -4,12 +4,12 @@ export interface Todo {
   id: number;
   isCompleted: boolean;
   taskValue: string;
-  descriptionValue: string;
-  priority: Priority | string;
-  category: string;
-  projectName: string;
+  descriptionValue?: string;
+  priority?: Priority | string;
+  category?: string;
+  projectName?: string;
   startDate?: string;
-  dueDate: string;
+  dueDate?: string;
 }
 
 export enum Pages {

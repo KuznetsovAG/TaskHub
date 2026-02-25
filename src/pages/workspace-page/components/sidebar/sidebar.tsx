@@ -52,7 +52,7 @@ const Sidebar = () => {
         </NavLink>
         <NavLink to="/to" className={setActive}>
           <span className={css.icon}>✅</span>Завершенные
-          <span className={css.badge}>8</span>
+          {/* <span className={css.badge}>8</span> */}
         </NavLink>
 
         <div className={css.navTitle}>Проекты</div>
