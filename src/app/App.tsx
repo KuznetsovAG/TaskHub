@@ -30,7 +30,7 @@ function App() {
           <Route path={ROUTES.WORKSPACE} element={<WorkspacePage />} />
           <Route path={ROUTES.TODOS} element={<TasksPage />} />
           <Route path={ROUTES.CREATE_TASK} element={<CreateTask />} />
-          <Route path="tasks/filter/:filter" element={<FilteredTaskCard />} />
+          <Route path={ROUTES.FILTER_PROJECT} element={<FilteredTaskCard />} />
         </Route>
 
         <Route path="*" element={<Navigate to={ROUTES.WORKSPACE} replace />} />

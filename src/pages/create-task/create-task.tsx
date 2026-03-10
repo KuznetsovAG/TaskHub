@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
 import css from "./create-task.module.css";
-import { useDispatch } from "react-redux";
-import { addTodo } from "../workspace-page/state/workspace-slice";
 import { categoryOptions, projectOptions } from "./utils/constants";
 import { Button, Input, Select, TextareaComponent } from "../../components";
 import type { Priority } from "../workspace-page/utils/types";
@@ -12,12 +10,13 @@ import { validateFormValue } from "./utils/functions";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
+import { useCreateTask } from "./state/create-task-state";
 
 const CreateTask = () => {
   const [priority, setPriority] = useState<Priority | string>("");
   const [isLoading, setIsLoading] = useState(false);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const addTask = useCreateTask((state) => state.addTask);
 
   const { control, handleSubmit, setValue } = useForm<FormValues>();
 
@@ -49,7 +48,7 @@ const CreateTask = () => {
     toast.success("Создаем задачу");
 
     setTimeout(() => {
-      dispatch(addTodo(todoTask));
+      addTask(todoTask);
       setIsLoading(false);
       toast.success("Задача успешно создана 🎉");
       navigate(ROUTES.TODOS);

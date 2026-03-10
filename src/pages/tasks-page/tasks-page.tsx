@@ -1,26 +1,19 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  setTodo,
-  workspacePageSelector,
-} from "../workspace-page/state/workspace-slice";
 import TaskCard from "./components/task-card/task-card";
 import css from "./tasks-page.module.css";
 import EmptyCard from "./components/empty-card/empty-card";
 import { useTasksQuery } from "./hooks";
+import { useCreateTask } from "../create-task/state/create-task-state";
 
 const TasksPage = () => {
-  const { todos: tasks } = useSelector(workspacePageSelector);
-
-  const dispatch = useDispatch();
-
+  const { setTasks, tasks } = useCreateTask();
   const { data, isLoading } = useTasksQuery();
 
   useEffect(() => {
     if (tasks.length === 0 && data) {
-      dispatch(setTodo(data));
+      setTasks(data);
     }
-  }, [data, dispatch, tasks.length]);
+  }, [data, setTasks, tasks.length]);
 
   if (isLoading) {
     return <h1>Loading....</h1>;

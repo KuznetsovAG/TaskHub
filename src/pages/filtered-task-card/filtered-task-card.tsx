@@ -1,27 +1,19 @@
-/* eslint-disable react-hooks/set-state-in-effect */
-import React, { useEffect, useState } from "react";
+import React, { useMemo } from "react";
 
 import css from "./filtered-task-card.module.css";
 import TaskCard from "../tasks-page/components/task-card/task-card";
 import EmptyCard from "../tasks-page/components/empty-card/empty-card";
-import { useSelector } from "react-redux";
-import { workspacePageSelector } from "../workspace-page/state/workspace-slice";
 import { useParams } from "react-router-dom";
 import { capitalize } from "../workspace-page/utils/functions";
+import { useCreateTask } from "../create-task/state/create-task-state";
 
 const FilteredTaskCard = () => {
-  const { todos: tasks } = useSelector(workspacePageSelector);
+  const { tasks } = useCreateTask();
+
   const { filter } = useParams();
-  const [filterTasks, setFiterTasks] = useState(tasks);
-
-  useEffect(() => {
-    if (filter) {
-      const filterArr = tasks.filter(
-        (task) => task.projectName === capitalize(filter)
-      );
-
-      setFiterTasks(filterArr);
-    }
+  const filterTasks = useMemo(() => {
+    if (!filter) return tasks;
+    return tasks.filter((task) => task.projectName === capitalize(filter));
   }, [filter, tasks]);
 
   const currentTask =

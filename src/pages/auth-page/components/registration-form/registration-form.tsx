@@ -11,19 +11,18 @@ import {
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../../../constants/routes";
 import { Button, Input } from "../../../../components";
-import { useDispatch } from "react-redux";
-import { addUser } from "../../state/auth-slice";
+import { useAuthProfile } from "../../state/auth-state";
 
 const RegistrationForm = () => {
   const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { addUser } = useAuthProfile();
   const { control, handleSubmit } = useForm<FormValues>({
     mode: "onChange",
   });
 
   const onSubmitForm = (data: FormValues) => {
-    dispatch(addUser(data));
+    addUser(data);
     navigate(ROUTES.WORKSPACE);
   };
 

@@ -1,18 +1,17 @@
 import React from "react";
 
 import css from "./sidebar.module.css";
-import { useSelector } from "react-redux";
-import { authSelector } from "../../../auth-page/state/auth-slice";
 import { getInitials } from "../../utils/functions";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../../../constants/routes";
-import { workspacePageSelector } from "../../state/workspace-slice";
+import { useCreateTask } from "../../../create-task/state/create-task-state";
+import { useAuthProfile } from "../../../auth-page/state/auth-state";
 
 const Sidebar = () => {
   const navigate = useNavigate();
 
-  const { userProfile: userProfileInfo } = useSelector(authSelector);
-  const { todos } = useSelector(workspacePageSelector);
+  const { userProfile: userProfileInfo } = useAuthProfile();
+  const { tasks } = useCreateTask();
 
   const handleChangePage = () => {
     navigate(ROUTES.TODOS);
@@ -46,8 +45,8 @@ const Sidebar = () => {
         >
           <span className={css.icon}>📝</span>
           Все задачи
-          {todos.length > 0 && (
-            <span className={css.badge}>{todos.length}</span>
+          {tasks.length > 0 && (
+            <span className={css.badge}>{tasks.length}</span>
           )}
         </NavLink>
         <NavLink to="/to" className={setActive}>

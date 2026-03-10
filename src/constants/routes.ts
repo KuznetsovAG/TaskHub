@@ -3,5 +3,5 @@ export const ROUTES = {
   WORKSPACE: "/",
   TODOS: "/todos",
   CREATE_TASK: "/todos/new",
-  FILTER_PROJECT: "tasks/filter",
+  FILTER_PROJECT: "tasks/filter/:filter",
 };
