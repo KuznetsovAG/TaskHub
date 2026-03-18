@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 
 import css from "./create-task.module.css";
 import { categoryOptions, projectOptions } from "./utils/constants";
@@ -11,6 +11,9 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
 import { useCreateTask } from "./state/create-task-state";
+import { useImproveText } from "../workspace-page/hooks/useImproveText";
+
+const API_KEY = import.meta.env.VITE_GROQ_API_KEY ?? "";
 
 const CreateTask = () => {
   const [priority, setPriority] = useState<Priority | string>("");
@@ -18,7 +21,10 @@ const CreateTask = () => {
   const navigate = useNavigate();
   const addTask = useCreateTask((state) => state.addTask);
 
-  const { control, handleSubmit, setValue } = useForm<FormValues>();
+  const { control, handleSubmit, setValue, watch } = useForm<FormValues>();
+  const { improve, status } = useImproveText({ apiKey: API_KEY });
+
+  const descriptionField = watch("descriptionValue");
 
   const handleSubmitForm = ({
     taskValue,
@@ -59,6 +65,17 @@ const CreateTask = () => {
     setPriority(value);
     setValue("priority", value, { shouldValidate: true, shouldDirty: true });
   };
+
+  const handleImprove = useCallback(
+    async (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+      const improvedVersion = await improve(descriptionField);
+      if (improvedVersion) {
+        setValue("descriptionValue", improvedVersion);
+      }
+    },
+    [improve, descriptionField, setValue]
+  );
 
   return (
     <div className={css.wrapper}>
@@ -113,7 +130,9 @@ const CreateTask = () => {
                     дополнить его деталями
                   </div>
                 </div>
-                <button className={css.button}>Улучшить</button>
+                <button className={css.button} onClick={handleImprove}>
+                  {status === "loading" ? "Улучшаю..." : "Улучшить"}
+                </button>
               </div>
               <div className={css.formRow}>
                 <Controller
