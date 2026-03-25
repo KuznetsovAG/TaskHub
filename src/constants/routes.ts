@@ -1,7 +1,7 @@
 export const ROUTES = {
   AUTH: "/auth",
-  WORKSPACE: "/",
-  TODOS: "/todos",
-  CREATE_TASK: "/todos/new",
+  DASHBOARD: "/",
+  TODOS: "/tasks",
+  CREATE_TASK: "/tasks/new",
   FILTER_PROJECT: "tasks/filter/:filter",
 };

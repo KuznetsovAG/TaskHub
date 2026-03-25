@@ -7,7 +7,7 @@ export interface Todo {
   descriptionValue?: string;
   priority?: Priority | string;
   category?: string;
-  projectName?: string;
+  taskType?: string;
   startDate?: string;
   dueDate?: string;
 }

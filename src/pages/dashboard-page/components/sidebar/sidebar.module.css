@@ -5,6 +5,7 @@
   border-right: 1px solid #2a2a2a;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 24px 16px;
 }
 
@@ -119,4 +120,24 @@
   border-radius: 12px;
   font-size: 12px;
   font-weight: 600;
+}
+
+.logoutBtn {
+  bottom: 24px;
+  right: 24px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logoutBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.4);
+  background: #ef4444;
 }

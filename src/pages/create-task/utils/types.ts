@@ -1,11 +1,11 @@
-import type { Priority } from "../../workspace-page/utils/types";
+import type { Priority } from "../../dashboard-page/utils/types";
 
 export interface FormValues {
   taskValue: string;
   descriptionValue: string;
   priority: Priority | string;
   category: string;
-  projectName: string;
+  taskType: string;
   startDate: string;
   dueDate: string;
 }

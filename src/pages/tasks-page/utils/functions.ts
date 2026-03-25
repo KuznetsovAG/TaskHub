@@ -1,4 +1,4 @@
-import type { Priority } from "../../workspace-page/utils/types";
+import type { Priority } from "../../dashboard-page/utils/types";
 import type { Tasks } from "../api/dto";
 
 export const getPriorityIcon = (priority: Priority | string): string => {

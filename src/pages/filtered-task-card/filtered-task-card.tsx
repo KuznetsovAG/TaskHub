@@ -4,7 +4,7 @@ import css from "./filtered-task-card.module.css";
 import TaskCard from "../tasks-page/components/task-card/task-card";
 import EmptyCard from "../tasks-page/components/empty-card/empty-card";
 import { useParams } from "react-router-dom";
-import { capitalize } from "../workspace-page/utils/functions";
+import { capitalize } from "../dashboard-page/utils/functions";
 import { useCreateTask } from "../create-task/state/create-task-state";
 
 const FilteredTaskCard = () => {
@@ -13,7 +13,7 @@ const FilteredTaskCard = () => {
   const { filter } = useParams();
   const filterTasks = useMemo(() => {
     if (!filter) return tasks;
-    return tasks.filter((task) => task.projectName === capitalize(filter));
+    return tasks.filter((task) => task.category === capitalize(filter));
   }, [filter, tasks]);
 
   const currentTask =

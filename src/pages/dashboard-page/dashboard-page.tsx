@@ -1,8 +1,8 @@
 import * as React from "react";
-import css from "./workspace-page.module.css";
+import css from "./dashboard-page.module.css";
 import CreateTask from "../create-task/create-task";
 
-const WorkspacePage = () => {
+const DashboardPage = () => {
   return (
     <div className={css.wrapper}>
       <CreateTask />
@@ -10,4 +10,4 @@ const WorkspacePage = () => {
   );
 };
 
-export default WorkspacePage;
+export default DashboardPage;

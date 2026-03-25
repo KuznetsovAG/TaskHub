@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from "react";
 
 import css from "./create-task.module.css";
-import { categoryOptions, projectOptions } from "./utils/constants";
+import { taskTypeOptions, projectOptions } from "./utils/constants";
 import { Button, Input, Select, TextareaComponent } from "../../components";
-import type { Priority } from "../workspace-page/utils/types";
+import type { Priority } from "../dashboard-page/utils/types";
 import { Controller, useForm } from "react-hook-form";
 import type { FormValues } from "./utils/types";
 import { validateFormValue } from "./utils/functions";
@@ -11,7 +11,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
 import { useCreateTask } from "./state/create-task-state";
-import { useImproveText } from "../workspace-page/hooks/useImproveText";
+import { useImproveText } from "../dashboard-page/hooks/useImproveText";
 
 const API_KEY = import.meta.env.VITE_GROQ_API_KEY ?? "";
 
@@ -31,7 +31,7 @@ const CreateTask = () => {
     category,
     descriptionValue,
     dueDate,
-    projectName,
+    taskType,
     startDate,
   }: FormValues) => {
     if (!taskValue) {
@@ -45,7 +45,7 @@ const CreateTask = () => {
       descriptionValue,
       priority,
       category,
-      projectName,
+      taskType,
       startDate,
       dueDate,
     };
@@ -137,11 +137,11 @@ const CreateTask = () => {
               <div className={css.formRow}>
                 <Controller
                   control={control}
-                  name="projectName"
+                  name="category"
                   render={({ field, fieldState }) => (
                     <Select
-                      title="Проект"
-                      optionTitle="Выберите проект"
+                      title="Категория "
+                      optionTitle="Выберите категорию"
                       value={field.value}
                       options={projectOptions}
                       onChange={field.onChange}
@@ -153,13 +153,13 @@ const CreateTask = () => {
 
                 <Controller
                   control={control}
-                  name="category"
+                  name="taskType"
                   render={({ field, fieldState }) => (
                     <Select
-                      title="Категория"
-                      optionTitle="Без категории"
+                      title="Тип задачи"
+                      optionTitle="Выберите тип задачи"
                       value={field.value}
-                      options={categoryOptions}
+                      options={taskTypeOptions}
                       onChange={field.onChange}
                       error={fieldState.error}
                     />

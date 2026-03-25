@@ -1,7 +1,8 @@
 import * as React from "react";
 
 import css from "./task-card.module.css";
-import type { Priority, Todo } from "../../../workspace-page/utils/types";
+import type { Priority, Todo } from "../../../dashboard-page/utils/types";
+import { useCreateTask } from "../../../create-task/state/create-task-state";
 
 const TaskCard = ({
   taskValue,
@@ -9,7 +10,8 @@ const TaskCard = ({
   descriptionValue,
   dueDate,
   priority = "low",
-  projectName,
+  taskType,
+  id,
 }: Todo) => {
   const priorityClassMap: Record<Priority, string> = {
     high: css.priorityHigh,
@@ -17,8 +19,13 @@ const TaskCard = ({
     low: css.priorityLow,
   };
 
-  const additionalInfo = Boolean(category || projectName || dueDate);
+  const additionalInfo = Boolean(category || taskType || dueDate);
 
+  const { removeTask } = useCreateTask();
+
+  const handleDeleteTask = (id: number): void => {
+    removeTask(id);
+  };
   return (
     <div className={css.taskCard}>
       <div
@@ -51,13 +58,24 @@ const TaskCard = ({
               <span className={css.metaValue}>{dueDate}</span>
             </div>
           )}
-          {projectName && (
-            <div className={css.taskMeta}>
-              <span className={`${css.tag} ${css.tagwork}`}>{projectName}</span>
+          {taskType && (
+            <div className={css.metaItem}>
+              <span className={css.metaIcon}>💻</span>
+              <span className={css.metaLabel}>Тип задачи:</span>
+              <span className={`${css.tag} ${css.tagwork}`}>{taskType}</span>
             </div>
           )}
         </div>
       )}
+      <div className={css.buttonContainer}>
+        <button
+          type="button"
+          className={css.deleteButton}
+          onClick={() => handleDeleteTask(id)}
+        >
+          Удалить
+        </button>
+      </div>
     </div>
   );
 };

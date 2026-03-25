@@ -1,16 +1,18 @@
 import React from "react";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { ROUTES } from "../constants/routes";
+import { useAuth } from "../hooks/use-auth";
 
-interface RequireAuthProps {
-  children?: React.ReactNode;
-}
+export const RequireAuth = () => {
+  const { isAuthenticated, isLoading } = useAuth();
 
-export const RequireAuth = ({ children }: RequireAuthProps) => {
-  const location = useLocation();
-  const auth = false;
-  if (!auth) {
-    return <Navigate to={ROUTES.AUTH} state={{ from: location }} />;
+  if (isLoading) {
+    return <div>Проверка авторизации...</div>;
   }
-  return children;
+
+  if (!isAuthenticated) {
+    return <Navigate to={ROUTES.AUTH} replace />;
+  }
+
+  return <Outlet />;
 };

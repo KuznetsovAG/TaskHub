@@ -16,14 +16,14 @@ import { useAuthProfile } from "../../state/auth-state";
 const RegistrationForm = () => {
   const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate();
-  const { addUser } = useAuthProfile();
+  const { register } = useAuthProfile();
   const { control, handleSubmit } = useForm<FormValues>({
     mode: "onChange",
   });
 
   const onSubmitForm = (data: FormValues) => {
-    addUser(data);
-    navigate(ROUTES.WORKSPACE);
+    register(data);
+    navigate(ROUTES.DASHBOARD);
   };
 
   return (
